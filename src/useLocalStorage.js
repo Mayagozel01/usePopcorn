@@ -4,8 +4,9 @@ export function useLocalStorage(initialState, key) {
     console.log("key:",key)
   const [value, setValue] = useState(function () {
     const storedValue = localStorage.getItem(key);
-    return (storedValue && storedValue.length===0) ? JSON.parse(storedValue) : initialState;
+    return    storedValue !== null ? JSON.parse(storedValue) : initialState;
   });
+
 
   useEffect(
     function () {
